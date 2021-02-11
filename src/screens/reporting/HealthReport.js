@@ -1,17 +1,18 @@
-
 import React from 'react'
-import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground, TextInput } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Stars from 'react-native-stars';
 import { ScrollView } from 'react-native-gesture-handler';
 import Swiper from 'react-native-swiper';
 import { AntDesign } from '@expo/vector-icons';
 import { LogBox } from 'react-native';
-import { f, auth, database, storage } from "../utilies/firebase.util"
+import { f, auth, database, storage } from "../../utilies/firebase.util"
 import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
-import { API_KEY } from '../utilies/weatherapikey.util';
-import { weatherConditions } from '../utilies/wheathercondition.util.js';
-import Weather from '../components/wheather.component';
+import { API_KEY } from '../../utilies/weatherapikey.util';
+import { weatherConditions } from '../../utilies/wheathercondition.util.js';
+import Weather from '../../components/wheather.component';
+import { FlatList } from 'react-native-gesture-handler';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 LogBox.ignoreAllLogs();
 
@@ -26,11 +27,29 @@ export default class HealthReport extends React.Component {
       temperature: 0,
       humidity: 0,
       weatherCondition: null,
+      dataBackup: [],
+      dataSource: [],
+      query: null,
+      visibility: false,
+      DateDisplay: ""
 
     };
   }
 
 
+
+  handleConfirm = (date) => {
+    this.setState({ DateDisplay: date.toUTCString() });
+
+  }
+  onPressCancel = () => {
+    this.setState({ visibility: false });
+
+  }
+  onPressButton = () => {
+    this.setState({ visibility: true });
+
+  }
 
   static navigationOptions = ({ navigation }) => {
     return {
@@ -68,11 +87,42 @@ export default class HealthReport extends React.Component {
       }
     );
 
+    database.ref('sensors').child(reference).child("historyTemperture").on('value', (snapshot) => {
+      var data = []
+      snapshot.forEach((child) => {
+        data.push({
+          key: child.val(),
+
+        })
+
+      })
+      this.setState({
+        dataSource: data,
+        dataBackup: data
+
+      })
+    })
+  };
 
 
+  filterItem = event => {
+    var DateDisplay = event.nativeEvent.text;
+    this.setState({
+      DateDisplay: DateDisplay,
+    });
+    if (DateDisplay == '') {
+      this.setState({
+        dataSource: this.state.dataBackup,
+      });
+    } else {
+      var data = this.state.dataBackup;
+      DateDisplay = DateDisplay.toLowerCase();
+      data = data.filter(l => l.key.toLowerCase().match(DateDisplay));
 
-
-
+      this.setState({
+        dataSource: data,
+      });
+    }
   };
 
   fetchWeather(lat = 25, lon = 25) {
@@ -118,22 +168,46 @@ export default class HealthReport extends React.Component {
             )}
 
         </View>
+
+        <View style={{ flexDirection: 'row', justifyContent: "space-between" }}>
+
+          <TextInput
+            editable={true}
+            placeholder="Search here ..."
+            placeholderTextColor="gray"
+            style={styles.input}
+            onChange={this.filterItem.bind(this)}
+            value={this.state.DateDisplay}
+          />
+
+          <DateTimePickerModal
+            isVisible={this.state.visibility}
+            onConfirm={this.handleConfirm}
+            onCancel={this.onPressCancel}
+            mode="date"
+
+          />
+
+          <TouchableOpacity style={{ marginTop: 8 }} onPress={this.onPressButton}>
+            <AntDesign name="calendar" size={34} color="#008000"></AntDesign>
+          </TouchableOpacity>
+
+        </View>
         <View>
 
           {
             +(this.state.latestTemperature) > 40 ?  // if has image
 
-              <View style={{ marginTop: 100, marginLeft: 30, height: 200, backgroundColor: "red", width: 250, justifyContent: "center", alignItems: "center", borderRadius: 8 }}>
+              <View style={{ marginTop: 30, marginLeft: 30, height: 200, backgroundColor: "red", width: 250, justifyContent: "center", alignItems: "center", borderRadius: 8 }}>
                 <FontAwesome5 style={{ marginBottom: 10 }} name="temperature-low" size={30} color={'#FFFFFF'} />
                 <Text style={{ color: "#FFFFFF", fontWeight: "bold", fontSize: 20, marginBottom: 20 }}>{this.state.latestTemperature}°C</Text>
 
                 <Text style={{ color: "#FFFFFF", marginBottom: 20, marginLeft: 30 }}>The temperature of your cow is very high contact a doctor</Text>
 
-
               </View>
               :
               +(this.state.latestTemperature) > 37 ?
-                <View style={{ marginTop: 100, marginLeft: 30, height: 200, backgroundColor: "green", width: 250, justifyContent: "center", alignItems: "center", borderRadius: 8 }}>
+                <View style={{ marginTop: 30, marginLeft: 30, height: 200, backgroundColor: "green", width: 250, justifyContent: "center", alignItems: "center", borderRadius: 8 }}>
                   <FontAwesome5 style={{ marginBottom: 10 }} name="temperature-low" size={30} color={'#FFFFFF'} />
                   <Text style={{ color: "#FFFFFF", fontWeight: "bold", fontSize: 20, marginBottom: 20 }}>{this.state.latestTemperature}°C</Text>
 
@@ -142,11 +216,10 @@ export default class HealthReport extends React.Component {
 
                 </View>
                 :
-                +(this.state.latestTemperature) > 20 ?
-                  <View style={{ marginTop: 100, marginLeft: 30, height: 200, backgroundColor: "blue", width: 250, justifyContent: "center", alignItems: "center", borderRadius: 8 }}>
+                +(this.state.latestTemperature) > 17 ?
+                  <View style={{ marginTop: 30, marginLeft: 30, height: 200, backgroundColor: "blue", width: 250, justifyContent: "center", alignItems: "center", borderRadius: 8 }}>
                     <FontAwesome5 style={{ marginBottom: 10 }} name="temperature-low" size={30} color={'#FFFFFF'} />
                     <Text style={{ color: "#FFFFFF", fontWeight: "bold", fontSize: 20, marginBottom: 20 }}>{this.state.latestTemperature}°C</Text>
-                    <Text style={{ color: "#FFFFFF", marginBottom: 20, marginLeft: 30 }}>your cattle is cold </Text>
 
 
                   </View>
@@ -172,6 +245,27 @@ export default class HealthReport extends React.Component {
 
         </View>
 
+
+
+        <FlatList
+          data={this.state.dataSource}
+          keyExtractor={(item, index) => index.toString()}
+          style={{ flex: 1, backgroundColor: '#fff', marginHorizontal: 7, borderRadius: 12, marginVertical: 7 }}
+          renderItem={({ item, index }) => (
+            <View key={index} style={{ width: '100%', overflow: 'hidden', marginBottom: 5, justifyContent: 'space-between', borderBottomWidth: 1, borderColor: 'grey' }}>
+
+              <View style={{ padding: 5, width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}>
+
+
+
+                <View style={{ padding: 20, paddingRight: 80, width: '100%', flexDirection: "column", justifyContent: 'space-between' }}>
+
+                  <Text>{item.key}  </Text>
+                </View>
+              </View>
+            </View>
+          )}
+        />
       </View>);
   }
 }
@@ -224,9 +318,15 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "700"
   },
+  input: {
+    height: 45,
+    width: '90%',
+    backgroundColor: '#eaeaea',
+    borderRadius: 20,
+    padding: 5,
+    paddingLeft: 10,
 
-
-
+  },
 });
 
 

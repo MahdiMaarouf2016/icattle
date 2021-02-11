@@ -95,7 +95,7 @@ export default class LoginScreen extends React.Component {
                     {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>}
                 </View>
                 <View style={styles.container}>
-                    <ImageBackground source={require('../../assets/backgroundscreen.png')} style={styles.image}>
+                    <ImageBackground source={require('../../../assets/backgroundscreen.png')} style={styles.image}>
                     </ImageBackground>
                 </View>
 

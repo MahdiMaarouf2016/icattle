@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { f, auth, database, storage } from "../utilies/firebase.util.js"
+import { f, auth, database, storage } from "../../utilies/firebase.util.js"
 import { LogBox } from 'react-native';
-import { deleteData } from "../utilies/localstorage.util"
-import { USER_STORAGE_KEY } from "../bases/asyncStorage.bases"
+import { deleteData } from "../../utilies/localstorage.util"
+import { USER_STORAGE_KEY } from "../../bases/asyncStorage.bases"
 LogBox.ignoreAllLogs();
 
 

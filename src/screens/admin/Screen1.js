@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList, KeyboardAvoidingView, TouchableHighlight, TextInput, Alert, Button, Pressable } from "react-native";
-import { f, auth, database, storage } from "../utilies/firebase.util";
+import { f, auth, database, storage } from "../../utilies/firebase.util";
 import { Feather } from '@expo/vector-icons';
 import { FlatListSlider } from 'react-native-flatlist-slider';
 import { AntDesign, FontAwesome, EvilIcons, MaterialCommunityIcons } from '@expo/vector-icons';
@@ -256,7 +256,7 @@ export default class Screen1 extends React.Component {
                             source={
                               item.authorAvatar
                                 ? { uri: item.authorAvatar }
-                                : require("../../assets/tempAvatar.jpg")
+                                : require("../../../assets/tempAvatar.jpg")
                             }
                             style={styles.avatar}
                           />

@@ -3,31 +3,31 @@ import registerRootComponent from 'expo/build/launch/registerRootComponent';
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
-import { Ionicons, Entypo, MaterialIcons, AntDesign, Fontisto, MaterialCommunityIcons } from "@expo/vector-icons";
-import loadingscreens from "./screens/loadingscreens";
-import OnboardingScreen from "./screens/OnboardingScreen";
-import LoginScreen from "./screens/LoginScreen";
-import RegisterScreen from "./screens/RegisterScreen";
-import Forgot from './screens/Forgot';
-import Screen1 from "./screens/Screen1";
-import Screen2 from "./screens/Screen2";
-import ProfileAdminScreen from "./screens/ProfileAdminScreen";
-import AnimalScreen from "./screens/AnimalScreen";
-import EditScreen from "./screens/EditScreen";
-import HealthReport from "./screens/HealthReport";
-import VetsScreen from "./screens/VetsScreen";
-import AddAnimalScreen from "./screens/AddAnimalScreen";
-import TrakingScreen from "./screens/TrakingScreen";
-import ProfileScreen from "./screens/ProfileScreen";
-import ScanScreen from "./screens/ScanScreen";
+import { Ionicons, Entypo, AntDesign, Fontisto, MaterialCommunityIcons } from "@expo/vector-icons";
+import loadingscreens from "./screens/app/loadingscreens";
+import OnboardingScreen from "./screens/app/OnboardingScreen";
+import LoginScreen from "./screens/auth/LoginScreen";
+import RegisterScreen from "./screens/auth/RegisterScreen";
+import Forgot from './screens/auth/Forgot';
+import Screen1 from "./screens/admin/Screen1";
+import Screen2 from "./screens/admin/Screen2";
+import ProfileAdminScreen from "./screens/admin/ProfileAdminScreen";
+import AnimalScreen from "./screens/animals/AnimalScreen";
+import EditScreen from "./screens/animals/EditScreen";
+import HealthReport from "./screens/reporting/HealthReport";
+import VetsScreen from "./screens/chat/VetsScreen";
+import AddAnimalScreen from "./screens/animals/AddAnimalScreen";
+import TrakingScreen from "./screens/reporting/TrakingScreen";
+import ProfileScreen from "./screens/auth/ProfileScreen";
+import ScanScreen from "./screens/app/ScanScreen";
 import { decode, encode } from 'base-64'
-import AddCattleToShopScreen from './screens/AddCattleToShopScreen';
-import CommentsScreen from './screens/CommentsScreen';
-import shops from './screens/shops';
-import UpdateScreen from './screens/UpdateScreen';
-import ChatScreen from './screens/ChatScreen';
-import RegisterOptionScreen from './screens/RegisterOptionScreen';
-import MychatsScreen from './screens/MychatsScreen';
+import AddCattleToShopScreen from './screens/market/AddCattleToShopScreen';
+import CommentsScreen from './screens/market/CommentsScreen';
+import shops from './screens/market/shops';
+import UpdateScreen from './screens/market/UpdateScreen';
+import ChatScreen from './screens/chat/ChatScreen';
+import RegisterOptionScreen from './screens/auth/RegisterOptionScreen';
+import MychatsScreen from './screens/chat/MychatsScreen';
 
 if (!global.btoa) {
     global.btoa = encode
@@ -66,7 +66,7 @@ const AppContainer = createStackNavigator(
                         tabBarIcon: ({ tintColor }) => <AntDesign name="shoppingcart" size={20} color={tintColor} />
                     }
                 },
-                Traking: {
+                traking: {
                     screen: TrakingScreen,
                     navigationOptions: {
                         tabBarIcon: ({ tintColor }) => <Entypo name="location" size={20} color={tintColor} />
@@ -174,8 +174,6 @@ const Scan = createStackNavigator({
 
 });
 
-
-
 const ch = createStackNavigator({
     Chat: ChatScreen
 
@@ -237,21 +235,17 @@ icattle = createAppContainer(
         {
 
             loading: loadingscreens,
-            // loading: HomeScreen,
             App: AppContainer,
             Auth: AuthStack,
             Admin: Admin,
             rep: report,
             scan: Scan,
-            //    sp:sp,
             ok: ok,
             addToshop: addToshop,
-            //  AddAnimal:AddAnimal
             ed: ed,
             up: up,
             ch: ch,
-            mychats: mychats
-
+            mychats: mychats,
         },
         {
             initialRouteName: "loading"

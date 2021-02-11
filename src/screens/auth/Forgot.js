@@ -51,7 +51,7 @@ export default class Forgot extends React.Component {
                         height: 200, marginLeft: 60, marginTop: 80,
                         width: 200
                     }}
-                    source={require('../../assets/Picture_PASSWORD_FORGOTTEN.png')}
+                    source={require('../../../assets/Picture_PASSWORD_FORGOTTEN.png')}
                 />
 
                 <StatusBar barStyle="light-content"></StatusBar>

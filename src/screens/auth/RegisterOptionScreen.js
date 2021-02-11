@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image, StatusBar } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import UserPermissions from "../utilies/userpermissions.util";
+import UserPermissions from "../../utilies/userpermissions.util";
 import * as ImagePicker from "expo-image-picker";
-import { f, auth, database, storage } from "../utilies/firebase.util"
+import { f, auth, database, storage } from "../../utilies/firebase.util"
 
 
 export default class RegisterOptionScreen extends React.Component {

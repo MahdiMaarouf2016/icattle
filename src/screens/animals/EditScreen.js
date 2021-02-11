@@ -1,10 +1,7 @@
-
-
-
 import React from "react";
 import { TextInput, ActivityIndicator, View, Text, StyleSheet, TouchableOpacity, TouchableHighlight, Image, ScrollView, Button, Alert } from "react-native";
-import { f, auth, database, storage } from "../utilies/firebase.util"
-import PhotoList from '../components/photolist.component.js'
+import { f, auth, database, storage } from "../../utilies/firebase.util"
+import PhotoList from '../../components/photolist.component.js'
 import { Picker } from 'react-native'
 import { Ionicons, Entypo, MaterialIcons, AntDesign, FontAwesome } from "@expo/vector-icons";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';

@@ -2,7 +2,7 @@ import React from "react";
 import { TextInput, ActivityIndicator, View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, Button, TouchableHighlight } from "react-native";
 import * as Permissions from 'expo-permissions';
 import * as ImagePicker from "expo-image-picker";
-import { f, auth, database, storage } from "../utilies/firebase.util";
+import { f, auth, database, storage } from "../../utilies/firebase.util";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { Picker } from 'react-native'
 import RBSheet from "react-native-raw-bottom-sheet";

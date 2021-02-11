@@ -1,14 +1,14 @@
 
 import React from "react";
 import { TextInput, View, Text, StyleSheet, Button, Image, FlatList, TouchableOpacity } from "react-native";
-import { f, auth, database, storage } from "../utilies/firebase.util.js"
+import { f, auth, database, storage } from "../../utilies/firebase.util.js"
 import RBSheet from "react-native-raw-bottom-sheet";
 import { Ionicons, FontAwesome5, Entypo, MaterialIcons, Feather, Fontisto, FontAwesome, Foundation, MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
 import * as Permissions from 'expo-permissions';
 import * as ImagePicker from "expo-image-picker";
 import { LogBox } from 'react-native';
-import { deleteData } from "../utilies/localstorage.util"
-import { USER_STORAGE_KEY } from "../bases/asyncStorage.bases"
+import { deleteData } from "../../utilies/localstorage.util"
+import { USER_STORAGE_KEY } from "../../bases/asyncStorage.bases"
 LogBox.ignoreAllLogs();
 
 
@@ -205,7 +205,7 @@ export default class ProfileScreen extends React.Component {
                                         source={
                                             this.state.uri
                                                 ? { uri: this.state.uri }
-                                                : require("../../assets/tempAvatar.jpg")
+                                                : require("../../../assets/tempAvatar.jpg")
                                         }
                                         style={styles.avatar}
                                     />

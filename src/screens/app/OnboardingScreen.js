@@ -11,7 +11,7 @@ const slides = [
     key: "one",
     title: "Controling your cattle's health",
     text: "you can set your system in order to get the information of your cattle's health on real-time.",
-    image: require("../../assets/Picture_SPLASH1.png")
+    image: require("../../../assets/Picture_SPLASH1.png")
 
   },
 
@@ -19,14 +19,14 @@ const slides = [
     key: "two",
     title: "Get Information About Your cattle's position",
     text: "you can get the geographic coordi",
-    image: require('../../assets/Picture_SPLASH2.png')
+    image: require('../../../assets/Picture_SPLASH2.png')
   },
 
   {
     key: "three",
     title: "Build & Share with Community",
     text: "You can communicate with other Farmers and trade cattle , learn from their experiences ...etc",
-    image: require('../../assets/Picture_SPLASH3.png')
+    image: require('../../../assets/Picture_SPLASH3.png')
   }
 ];
 const styles = StyleSheet.create({

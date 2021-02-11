@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
-import { f, auth, database, storage } from "../utilies/firebase.util"
+import { f, auth, database, storage } from "../../utilies/firebase.util"
 import { LogBox } from 'react-native';
 LogBox.ignoreAllLogs();
 export default class loadingscreens extends React.Component {

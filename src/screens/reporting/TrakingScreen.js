@@ -7,16 +7,14 @@ import * as firebase from 'firebase';
 import { FlatList } from 'react-native-gesture-handler';
 import { f, auth, database, storage } from "../utilies/firebase.util.js"
 import MapView from 'react-native-maps';
+import { number } from 'prop-types';
 
 export default class TrakingScreen extends React.Component {
-
+  coordinations = {};
   constructor() {
     super();
     this.state = {
-      coordinations: {
-        latitude: 39.085855,
-        longitude: -106.391015,
-      }
+
     };
   }
   componentDidMount = () => {
@@ -26,17 +24,16 @@ export default class TrakingScreen extends React.Component {
 
     database.ref("Location").child(reference).child("Location").child("latitude").on('value', (snapshot) => {
       snapshot.forEach((child) => {
-        this.setState({
-          coordinations: { latitude: child.val(), }
-        })
+        this.coordinations.latitude = Number.parseFloat(child.val());
+        if (this.coordinations.longitude) this.setState({ coordinations: this.coordinations })
       })
     })
 
     database.ref("Location").child(reference).child("Location").child("longitude").on('value', (snapshot) => {
       snapshot.forEach((child) => {
-        this.setState({
-          coordinations: { longitude: child.val(), }
-        })
+        this.coordinations.longitude = Number.parseFloat(child.val());
+        if (this.coordinations.latitude) this.setState({ coordinations: this.coordinations })
+
       })
     })
 
@@ -49,8 +46,8 @@ export default class TrakingScreen extends React.Component {
           style={styles.fillScreen}
           region={
             {
-              latitude: this.state.coordinations.latitude,
-              longitude: this.state.coordinations.longitude,
+              latitude: (this.state.coordinations || { latitude: 0, longitude: 0 }).latitude,
+              longitude: (this.state.coordinations || { latitude: 0, longitude: 0 }).longitude,
               latitudeDelta: 0,
               longitudeDelta: 0.05,
             }
@@ -61,7 +58,7 @@ export default class TrakingScreen extends React.Component {
             key={1222}
             title={"title"}
             description={"description"}
-            coordinate={this.state.coordinations}
+            coordinate={this.state.coordinations || { latitude: 0, longitude: 0 }}
           />
         </MapView>
       </View>

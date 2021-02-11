@@ -12,10 +12,10 @@ import { AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity, Alert } from "react-native";
 import { FlatList } from 'react-native-gesture-handler';
 import { Ionicons, FontAwesome5, MaterialIcons, Feather, Fontisto, FontAwesome, Foundation, Entypo } from "@expo/vector-icons";
-import { f, auth, database, storage } from "../utilies/firebase.util.js"
+import { f, auth, database, storage } from "../../utilies/firebase.util.js"
 const { width, height } = Dimensions.get('window');
-import Weather from '../components/wheather.component';
-import { API_KEY } from '../utilies/weatherapikey.util';
+import Weather from '../../components/wheather.component';
+import { API_KEY } from '../../utilies/weatherapikey.util';
 //import { Calendar } from 'react-native-calendars'; 
 import CalendarStrip from 'react-native-slideable-calendar-strip';
 import HorizontalCalendar from 'horizontal-calendar'
@@ -128,7 +128,7 @@ export default class AnimalScreen extends React.Component {
   }
 
   traking = (id, reference) => {
-    this.props.navigation.navigate('Traking', { id: id, reference: reference });
+    this.props.navigation.navigate('traking', { id: id, reference: reference });
   }
 
 

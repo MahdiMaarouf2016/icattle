@@ -335,7 +335,7 @@ export default class shops extends React.Component {
                             source={
                               item.authorAvatar
                                 ? { uri: item.authorAvatar }
-                                : require("../../assets/tempAvatar.jpg")
+                                : require("../../../assets/tempAvatar.jpg")
                             }
                             style={styles.avatar}
                           />

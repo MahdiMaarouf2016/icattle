@@ -4,7 +4,7 @@ import { TextInput, ActivityIndicator, View, Text, StyleSheet, TouchableHighligh
 import { Ionicons } from "@expo/vector-icons";
 import * as Permissions from 'expo-permissions';
 import * as ImagePicker from "expo-image-picker";
-import { f, auth, database, storage } from "../utilies/firebase.util";
+import { f, auth, database, storage } from "../../utilies/firebase.util";
 import { AntDesign } from '@expo/vector-icons';
 import RBSheet from "react-native-raw-bottom-sheet";
 import { LogBox } from 'react-native';

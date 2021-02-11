@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { GiftedChat } from "react-native-gifted-chat";
-import { f, auth, database, storage } from "../utilies/firebase.util"
+import { f, auth, database, storage } from "../../utilies/firebase.util"
 import { AntDesign } from '@expo/vector-icons';
 import { LogBox } from 'react-native';
 LogBox.ignoreAllLogs();

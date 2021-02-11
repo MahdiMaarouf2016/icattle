@@ -135,7 +135,7 @@ export default class Screen2 extends Component {
                   source={
                     item.image
                       ? { uri: item.image }
-                      : require("../../assets/tempAvatar.jpg")
+                      : require("../../../assets/tempAvatar.jpg")
                   }
                   style={{ width: 60, height: 60, borderRadius: 30 }}
                 />
