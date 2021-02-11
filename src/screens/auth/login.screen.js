@@ -7,7 +7,8 @@ import {
     TouchableOpacity,
     StatusBar,
     LayoutAnimation,
-    ImageBackground
+    ImageBackground,
+    Switch
 } from "react-native";
 import { f, auth, database, storage } from "../../utilies/firebase.util"
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
@@ -17,6 +18,7 @@ import { USER_STORAGE_KEY } from "../../bases/asyncStorage.bases"
 LogBox.ignoreAllLogs();
 
 export default class LoginScreen extends React.Component {
+    switchValue = false;
     static navigationOptions = {
         headerShown: false
     };
@@ -47,6 +49,10 @@ export default class LoginScreen extends React.Component {
             }
         )
     }
+    toggleSwitch = value => {
+        this.switchValue = value;
+
+    };
     implementLogin = async (email, password, remember = true) => {
         if (email != '' && password != '') {
             if (email === 'admin@gmail.com' && password === 'adminadmin') {
@@ -79,7 +85,7 @@ export default class LoginScreen extends React.Component {
     login = async () => {
         var email = this.state.email;
         var password = this.state.password;
-        await this.implementLogin(email, password);
+        await this.implementLogin(email, password, switchValue);
 
     };
 
@@ -148,6 +154,15 @@ export default class LoginScreen extends React.Component {
                                 onChangeText={(text) => this.setState({ password: text })} value={this.state.password}
                             ></TextInput>
                         </View>
+                        <View style={{ flexDirection: "row", marginTop: 10 }}>
+                            <Text>Remember me</Text>
+                            <Switch
+                                style={{}}
+                                onValueChange={this.toggleSwitch}
+                                value={this.switchValue}
+                            />
+                        </View>
+
 
                         <TouchableOpacity onPress={() => this.props.navigation.navigate("forgot")}>
                             <Text style={{ fontSize: 12, marginTop: 15, marginLeft: 160, fontWeight: "500", color: "#00ff00" }}>
