@@ -10,7 +10,7 @@ import { TouchableOpacity, Alert, TouchableHighlight, Linking } from "react-nati
 import { FlatList } from 'react-native-gesture-handler';
 import { MaterialIcons, Entypo, FontAwesome5 } from '@expo/vector-icons';
 import { Ionicons, Feather } from "@expo/vector-icons";
-import { f, auth, database, storage } from ".../utilies/firebase.util"
+import { f, auth, database, storage } from "../utilies/firebase.util"
 const { width, height } = Dimensions.get('window');
 import { SearchBar, Avatar, Badge, Icon, withBadge } from 'react-native-elements';
 
