@@ -19,15 +19,29 @@ export default class TrakingScreen extends React.Component {
       }
     };
   }
-  componentDidMount() {
-    database.ref("Location").on('value', (data) => {
-      data.forEach(v => {
-        v.forEach(v2 => {
-          alert(JSON.stringify(v2))
+  componentDidMount = () => {
+    const { navigation } = this.props;
+    const idphoto = navigation.getParam('id');
+    const reference = navigation.getParam('reference');
+
+    database.ref("Location").child(reference).child("Location").child("latitude").on('value', (snapshot) => {
+      snapshot.forEach((child) => {
+        this.setState({
+          coordinations: { latitude: child.val(), }
         })
       })
     })
-  }
+
+    database.ref("Location").child(reference).child("Location").child("longitude").on('value', (snapshot) => {
+      snapshot.forEach((child) => {
+        this.setState({
+          coordinations: { longitude: child.val(), }
+        })
+      })
+    })
+
+  };
+
   render() {
     return (
       <View style={styles.fillScreen}>
