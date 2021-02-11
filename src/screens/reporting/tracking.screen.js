@@ -5,7 +5,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { NavigationActions } from 'react-navigation';
 import * as firebase from 'firebase';
 import { FlatList } from 'react-native-gesture-handler';
-import { f, auth, database, storage } from "../utilies/firebase.util.js"
+import { f, auth, database, storage } from "../../utilies/firebase.util.js"
 import MapView from 'react-native-maps';
 import { number } from 'prop-types';
 

@@ -6,28 +6,28 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 import { Ionicons, Entypo, AntDesign, Fontisto, MaterialCommunityIcons } from "@expo/vector-icons";
 import loadingscreens from "./screens/app/loadingscreens";
 import OnboardingScreen from "./screens/app/OnboardingScreen";
-import LoginScreen from "./screens/auth/LoginScreen";
-import RegisterScreen from "./screens/auth/RegisterScreen";
-import Forgot from './screens/auth/Forgot';
+import LoginScreen from "./screens/auth/login.screen";
+import RegisterScreen from "./screens/auth/register.screen";
+import Forgot from './screens/auth/forgot.screen';
 import Screen1 from "./screens/admin/Screen1";
 import Screen2 from "./screens/admin/Screen2";
-import ProfileAdminScreen from "./screens/admin/ProfileAdminScreen";
-import AnimalScreen from "./screens/animals/AnimalScreen";
-import EditScreen from "./screens/animals/EditScreen";
-import HealthReport from "./screens/reporting/HealthReport";
-import VetsScreen from "./screens/chat/VetsScreen";
-import AddAnimalScreen from "./screens/animals/AddAnimalScreen";
-import TrakingScreen from "./screens/reporting/TrakingScreen";
-import ProfileScreen from "./screens/auth/ProfileScreen";
+import ProfileAdminScreen from "./screens/admin/profileadmin.screen";
+import AnimalScreen from "./screens/animals/animaldetails.screen";
+import EditScreen from "./screens/animals/updateanimal.screen";
+import HealthReport from "./screens/reporting/healthreport.screen";
+import VetsScreen from "./screens/chat/vet.screen";
+import AddAnimalScreen from "./screens/animals/addanimal.screen";
+import TrakingScreen from "./screens/reporting/tracking.screen";
+import ProfileScreen from "./screens/auth/profile.screen";
 import ScanScreen from "./screens/app/ScanScreen";
 import { decode, encode } from 'base-64'
-import AddCattleToShopScreen from './screens/market/AddCattleToShopScreen';
-import CommentsScreen from './screens/market/CommentsScreen';
-import shops from './screens/market/shops';
-import UpdateScreen from './screens/market/UpdateScreen';
-import ChatScreen from './screens/chat/ChatScreen';
-import RegisterOptionScreen from './screens/auth/RegisterOptionScreen';
-import MychatsScreen from './screens/chat/MychatsScreen';
+import AddCattleToShopScreen from './screens/market/addtoshop.screen';
+import CommentsScreen from './screens/market/comments.screen';
+import shops from './screens/market/shops.screen';
+import UpdateScreen from './screens/market/editshopitem.screen';
+import ChatScreen from './screens/chat/chat.screen';
+import RegisterOptionScreen from './screens/auth/registeroption.screen';
+import MychatsScreen from './screens/chat/inbox.screen';
 
 if (!global.btoa) {
     global.btoa = encode
