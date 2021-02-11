@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, TextInput, KeyboardAvoidingView, StyleSheet, TouchableHighlight, TouchableOpacity, Image, FlatList } from "react-native";
-import { f, auth, database, storage } from "../config/config.js"
+import { f, auth, database, storage } from "../utilies/firebase.util"
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { LogBox } from 'react-native';

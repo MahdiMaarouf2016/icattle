@@ -13,7 +13,7 @@ import SearchBar from 'react-native-search-bar';
 import { TouchableOpacity, Alert } from "react-native";
 import { FlatList } from 'react-native-gesture-handler';
 import { Ionicons } from "@expo/vector-icons";
-import { f, auth, database, storage } from "../config/config.js"
+import { f, auth, database, storage } from "../utilies/firebase.util"
 const { width, height } = Dimensions.get('window');
 
 export default class Screen2 extends Component {

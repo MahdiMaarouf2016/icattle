@@ -4,7 +4,7 @@ import { AntDesign, Entypo } from '@expo/vector-icons';
 
 import { NavigationActions } from 'react-navigation';
 import * as firebase from 'firebase';
-import { f, auth, database, storage } from "../config/config.js"
+import { f, auth, database, storage } from "../utilies/firebase.util"
 import { SearchBar, Avatar, Badge, Icon, withBadge } from 'react-native-elements';
 import { LogBox } from 'react-native';
 LogBox.ignoreAllLogs();

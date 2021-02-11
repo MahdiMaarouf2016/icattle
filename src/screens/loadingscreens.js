@@ -1,12 +1,12 @@
 import React from "react";
 import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
-import {f, auth, database, storage} from "../config/config.js"
-import {LogBox} from 'react-native';
+import { f, auth, database, storage } from "../utilies/firebase.util"
+import { LogBox } from 'react-native';
 LogBox.ignoreAllLogs();
 export default class loadingscreens extends React.Component {
 
 
-    constructor(props){
+    constructor(props) {
         super(props);
     }
 
@@ -18,10 +18,10 @@ export default class loadingscreens extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-    <Text> loading</Text>
+                <Text> loading</Text>
                 <ActivityIndicator size="large"></ActivityIndicator>
             </View>
-    );
+        );
     }
 }
 

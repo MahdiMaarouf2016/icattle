@@ -1,9 +1,9 @@
 import React from "react";
-import {StyleSheet, Text, TextInput, View, TouchableOpacity, Image, StatusBar} from "react-native";
-import {Ionicons} from "@expo/vector-icons";
-import UserPermissions from "../utilies/UserPermissions";
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image, StatusBar } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import UserPermissions from "../utilies/userpermissions.util";
 import * as ImagePicker from "expo-image-picker";
-import {f, auth, database, storage} from "../config/config.js"
+import { f, auth, database, storage } from "../utilies/firebase.util"
 
 
 export default class RegisterOptionScreen extends React.Component {
@@ -23,14 +23,14 @@ export default class RegisterOptionScreen extends React.Component {
                 <StatusBar barStyle="light-content"></StatusBar>
 
 
-                <Text style={styles.greeting}>{`Hello!`}</Text>   
-                <TouchableOpacity style={styles.button}onPress={() => this.props.navigation.navigate("Register",{value: "farmer"})}
-                  >
-                  <Text style={{ color: "#FFF", fontWeight: "500" }}>Farmer</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("Register",{value: "doctor"})}
+                <Text style={styles.greeting}>{`Hello!`}</Text>
+                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("Register", { value: "farmer" })}
                 >
-                 <Text style={{ color: "#FFF", fontWeight: "500" }}>Doctor</Text>
+                    <Text style={{ color: "#FFF", fontWeight: "500" }}>Farmer</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("Register", { value: "doctor" })}
+                >
+                    <Text style={{ color: "#FFF", fontWeight: "500" }}>Doctor</Text>
                 </TouchableOpacity>
             </View>
         );
@@ -50,7 +50,8 @@ const styles = StyleSheet.create({
     },
 
 
-    button: {marginTop:20,
+    button: {
+        marginTop: 20,
         marginHorizontal: 30,
         backgroundColor: "#008000",
         borderRadius: 4,

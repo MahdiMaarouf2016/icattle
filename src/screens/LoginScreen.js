@@ -9,10 +9,10 @@ import {
     LayoutAnimation,
     ImageBackground
 } from "react-native";
-import { f, auth, database, storage } from "../config/config.js"
+import { f, auth, database, storage } from "../utilies/firebase.util"
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
 import { LogBox } from 'react-native';
-import { getData, storeData } from "../utilies/AsyncStorage";
+import { getData, storeData } from "../utilies/localstorage.util";
 import { USER_STORAGE_KEY } from "../bases/asyncStorage.bases"
 LogBox.ignoreAllLogs();
 
